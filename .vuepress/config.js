@@ -44,7 +44,7 @@ module.exports = {
         "icon": "reco-message",
         "items": [{
           "text": "GitHub",
-          "link": "https://github.com/recoluan",
+          "link": "https://github.com/codehyd",
           "icon": "reco-github"
         }]
       }
@@ -72,9 +72,9 @@ module.exports = {
     },
     "friendLink": [{
         "title": "amwanbai",
-        "desc": "Enjoy when you can, and endure when you must.",
-        "email": "1156743527@qq.com",
-        "link": "https://www.recoluan.com"
+        "desc": "努力",
+        "email": "2303885822@qq.com",
+        "link": "https://github.com/codehyd"
       },
     ],
     // "logo": "/logo.png",
