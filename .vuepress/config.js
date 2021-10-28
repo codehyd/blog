@@ -20,37 +20,33 @@ module.exports = {
   ],
   "theme": "reco",
   "themeConfig": {
-    "nav": [
-      {
-        "text": "Home",
+    logo:'/images/headImage.jpg',
+    "nav": [{
+        "text": "首页",
         "link": "/",
         "icon": "reco-home"
       },
       {
-        "text": "TimeLine",
+        "text": "时间线",
         "link": "/timeline/",
         "icon": "reco-date"
       },
-      {
-        "text": "Docs",
-        "icon": "reco-message",
-        "items": [
-          {
-            "text": "vuepress-reco",
-            "link": "/docs/theme-reco/"
-          }
-        ]
-      },
+      // {
+      //   "text": "Docs",
+      //   "icon": "reco-message",
+      //   "items": [{
+      //     "text": "vuepress-reco",
+      //     "link": "/docs/theme-reco/"
+      //   }]
+      // },
       {
         "text": "Contact",
         "icon": "reco-message",
-        "items": [
-          {
-            "text": "GitHub",
-            "link": "https://github.com/recoluan",
-            "icon": "reco-github"
-          }
-        ]
+        "items": [{
+          "text": "GitHub",
+          "link": "https://github.com/recoluan",
+          "icon": "reco-github"
+        }]
       }
     ],
     "sidebar": {
@@ -58,44 +54,58 @@ module.exports = {
         "",
         "theme",
         "plugin",
-        "api"
+        "api",
+        "aaa"
+      
       ]
     },
     "type": "blog",
     "blogConfig": {
       "category": {
         "location": 2,
-        "text": "Category"
+        "text": "分类"
       },
       "tag": {
         "location": 3,
-        "text": "Tag"
+        "text": "标签"
       }
     },
-    "friendLink": [
-      {
-        "title": "午后南杂",
+    "friendLink": [{
+        "title": "amwanbai",
         "desc": "Enjoy when you can, and endure when you must.",
         "email": "1156743527@qq.com",
         "link": "https://www.recoluan.com"
       },
-      {
-        "title": "vuepress-theme-reco",
-        "desc": "A simple and beautiful vuepress Blog & Doc theme.",
-        "avatar": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        "link": "https://vuepress-theme-reco.recoluan.com"
-      }
     ],
-    "logo": "/logo.png",
+    // "logo": "/logo.png",
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
     "author": "amwanbai",
-    "authorAvatar": "/avatar.png",
-    "record": "xxxx",
-    "startYear": "2017"
-  },
+    "authorAvatar": "/images/headImage.jpg",
+    "record": "amwambai",
+    "startYear": "2021"
+  },  
   "markdown": {
     "lineNumbers": true
-  }
+  },
+  plugins: [
+    ['@vuepress-reco/vuepress-plugin-kan-ban-niang', {
+      theme: ['haruto', 'koharu', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
+      modelStyle: {
+        left: '50px',
+        bottom: '-20px',
+        opacity: '0.9'
+      },
+      messageStyle: {
+        left: '28px',
+        bottom: '190px'
+      },
+      btnStyle: {
+        left: '50px',
+        bottom: '40px'
+      }
+    }],
+    ['vuepress-plugin-code-copy', true]
+  ]
 }
