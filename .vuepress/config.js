@@ -1,7 +1,7 @@
 module.exports = {
   "title": "amwambai_blog",
   "description": "blog",
-  "dest": "public",
+  "dest": "dist",
 
   "head": [
     [
