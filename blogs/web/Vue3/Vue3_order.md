@@ -123,3 +123,50 @@ categories:
   - v-show不可以和v-else一起使用
   - v-show元素无论是否需要显示到浏览器上，它的DOM实际都是有渲染的，只是通过CSS的display属性来进行切换
   - v-if当条件为false时，其对应的原生压根不会被渲染到DOM中
+
+
+## 列表渲染 v-for
+
+- 假如需要渲染一组数据的话需要使用 v-for 来完成
+  - v-for 基本格式为 
+```vue
+item in arr
+```
+  - item 是我们给每项元素起的一个别名，这个别名可以自定来定义
+  - 如果需要索引值我们可以使用 (item,index) in arr
+  - v-for 也可以便利对象 (支持三种语法)
+```vue
+value in object
+(value, key) in object
+(value, key, index) in object
+```
+
+- Vue 会侦听以下数组方法 当以下方法发生改变后 列表渲染的数据才相对应发生改变
+
+```js
+arr.push()
+arr.ppop()
+arr.pshift()
+arr.punshift()
+arr.psplice()
+arr.psort()
+arr.preverse()
+```
+
+## v-for中的key
+
+- 在使用v-for进行列表渲染时，我们通常会给元素或者组件绑定一个key属性
+  - key属性主要用在Vue的虚拟DOM算法，在新旧nodes对比时辨识VNodes
+  - 如果不使用key，Vue会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类
+  - 而使用key时，它会基于key的变化重新排列元素顺序，并且会移除/销毁key不存在的元素
+  - 这能帮助我们提高性能
+
+## VNode
+
+- 简单来说VNode是html元素创建出来的VNode(虚拟节点)
+- 事实上VNode是在Vue表示出来的一个个VNode
+- VNode的本质是一个JavaScript的对象
+
+## 虚拟DOM
+
+- 如果我们不只是一个简单的div，而是有一大堆的元素，那么它们应该会形成一个VNode Tree

@@ -9,7 +9,7 @@ categories:
 
 ## 计数器案例
 
-- 原生案例代码
+## 原生案例代码
 
 ```html
   <body>
@@ -40,7 +40,7 @@ categories:
   </body>
 ```
 
-- Vue3代码演示
+## Vue3代码演示
 
 ```html
 <body>
@@ -75,6 +75,43 @@ categories:
         decrement() {
           console.log("点击了-1");
           this.counter--;
+        }
+      }
+    }).mount('#app'); // 挂载到 #app 元素
+  </script>
+</body>
+```
+
+## Vue3 列表循环插入新数据演示
+
+```html
+<body>
+  <div id="app"></div>
+
+  <!-- 1. CDN 引入 Vue3.js -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    // 2. 创建 Vue 实例对象
+    Vue.createApp({
+      // 设置 Vue 实例的 template 模板
+      template: `
+        <div>
+          <ul>
+            // v-for 列表循环
+            <li v-for="item in letters" :key="item">{{item}}</li>
+          </ul>
+          <button @click="insertF">插入F元素</button>
+        </div>
+      `,
+      data: function() {
+        return {
+          letters: ['a', 'b', 'c', 'd']
+        }
+      },
+      methods: {
+        insertF() {
+          // 在数组索引第2的位置添加 F 属性
+          this.letters.splice(2, 0, 'f')
         }
       }
     }).mount('#app'); // 挂载到 #app 元素
