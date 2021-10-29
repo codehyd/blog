@@ -1,5 +1,5 @@
 ---
-title: Vue3的指令
+title: Vue3的指令与渲染
 date: 2021-10-29
 tags:
  - Vue3
@@ -90,7 +90,7 @@ categories:
 <button @click="btn1Click">按钮1</button>
 
 <!-- 一个元素绑定多个事件，这个时候可以传入一个对象 -->
-<div class="area" @="{click: btn1Click, mousemove: mouseMove}"></div>
+<div @="{click: btn1Click, mousemove: mouseMove}"></div>
 ```
 
   - 传递参数
