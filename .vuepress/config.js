@@ -2,6 +2,7 @@ module.exports = {
   "title": "amwambai_blog",
   "description": "blog",
   "dest": "public",
+
   "head": [
     [
       "link",
@@ -20,7 +21,7 @@ module.exports = {
   ],
   "theme": "reco",
   "themeConfig": {
-    logo:'/images/headImage.jpg',
+    logo:'/logo.jpg',
     "nav": [{
         "text": "首页",
         "link": "/",
@@ -82,7 +83,7 @@ module.exports = {
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
     "author": "amwanbai",
-    "authorAvatar": "/images/headImage.jpg",
+    "authorAvatar": "/logo.jpg",
     "record": "amwambai",
     "startYear": "2021"
   },  

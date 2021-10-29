@@ -94,3 +94,23 @@ build/**/*.pdf
 ```sh
 git log
 ```
+
+## 分支
+
+- 查看分支
+
+```sh
+git branch
+```
+
+## 创建新分支 不会切换分支
+
+```sh
+git branch newBranchName
+```
+
+## 切换分支
+
+```sh
+git checkout 现有分支
+```
