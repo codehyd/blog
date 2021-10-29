@@ -114,3 +114,25 @@ git branch newBranchName
 ```sh
 git checkout 现有分支
 ```
+
+## 合并分支
+
+```sh
+# 需要先切换到主分支
+git checkout 主分支
+
+# 在主分支运行 git merge 合并
+git merge 功能分支
+```
+
+## 删除分支
+
+```sh
+git branch -d 分支名称
+```
+
+## 推送分支到远程仓库
+
+```sh
+git push -u origin 分支别名
+```
