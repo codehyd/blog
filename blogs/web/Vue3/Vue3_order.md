@@ -170,3 +170,27 @@ arr.preverse()
 ## 虚拟DOM
 
 - 如果我们不只是一个简单的div，而是有一大堆的元素，那么它们应该会形成一个VNode Tree
+
+
+## v-model
+
+1. v-model是表单开发中与表单元素双向绑定
+  - 它会根据控件的类型自动选取正确的方法更新元素
+  - 本质上v-model 是语法糖(简写) 它负责监听用户输入的事件来更新数据 对某种极端场景下进行一些他特殊的处理
+  - v-model绑定的类型是string(字符串)类型
+
+2. 修饰符的使用
+
+  - lazy 表示提交后才会触发 并非实时绑定
+```vue
+<input v-model.lazy="info" />
+```
+  
+  - number 会让字符类型转换为数字类型
+```vue
+<input v-model.number="info" />
+```
+  - trim 自动去除 前后两端的空格
+```vue
+<input v-model.trim="info" />
+```
