@@ -29,3 +29,55 @@ module.exports = {
 ```json
 "build": "webpack --config 别名"
 ```
+
+> 在默认情况下只能打包js文件 不会识别比如css文件等
+
+## 如果需要引入对应的样式 则需要安装对应的 loader (css-loader | style-loader)
+
+> 若值安装css-loader 则不会生效 需要引入style-loader
+-  因为css-loader 只负责加载css文件  不会吧css代码加载到html内
+
+1. 需要安装对应的loader
+```
+npm install css-loader -D
+npm install style-loader -D
+```
+
+2. loader需要配置对应的规则
+  - 内联方式 
+```js
+import "css-loader! ../style.css" // 不推荐
+```
+  - 配置方式
+```js
+module.exports = {
+  module:{
+    // 配置规则
+    rules:[
+      // css
+      {
+        test: /\.css$/,  // 正则表达式
+        // 1. loader的写法(语法糖)
+        // loader: "css-loader"
+
+        // 2. 完整写法  
+        // 注意: use写法加载的loader的顺序是从后往前执行的 加载css样式是需要先加载css-loader 在加载style-loader
+        use:[
+          // {loader : "css-loader"}
+          "style-loader",
+          "css-loader"
+        ]
+      },
+      // less (需要先将less 文件转换为css文件 所以 less-loader 必须放在最后)
+      {
+        test: /\.less$/,  
+        use:[
+          "style-loader",
+          "css-loader",
+          "less-loader"
+        ]
+      },
+    ]
+  }
+}
+```

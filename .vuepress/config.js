@@ -52,11 +52,6 @@ module.exports = {
     ],
     "sidebar": {
       "/docs/theme-reco/": [
-        "",
-        "theme",
-        "plugin",
-        "api",
-        "aaa"
 
       ]
     },
