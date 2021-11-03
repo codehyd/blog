@@ -1,5 +1,5 @@
 module.exports = {
-  "title": "amwambai_blog",
+  "title": "amwanbai_blog",
   "description": "blog",
   "dest": "dist",
 
@@ -41,7 +41,7 @@ module.exports = {
     //   }]
     // },
     {
-      "text": "Contact",
+      "text": "联系",
       "icon": "reco-message",
       "items": [{
         "text": "GitHub",
@@ -67,13 +67,17 @@ module.exports = {
       }
     },
     "friendLink": [{
-      "title": "amwanbai",
+      "title": "Github",
       "desc": "努力",
-      "email": "2303885822@qq.com",
+      // "email": "2303885822@qq.com",
       "link": "https://github.com/codehyd"
+    }, {
+      "title": "wx",
+      "desc": "13229231326",
+      // "email": "2303885822@qq.com",
+      // "link": "https://github.com/codehyd"
     },
     ],
-    // "logo": "/logo.png",
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
