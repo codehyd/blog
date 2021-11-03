@@ -261,33 +261,3 @@ Vue.createApp({
 }).mount("#app");
 ```
 
-## v-model 
-1. v-model双向绑定原理
-```vue
-# 利用 value属性绑定值 通过input事件来更改值
-<input type="text" :value="message" @input="inputChange">
-
-data() {
-  return {
-    message: "Hello World"
-  }
-},
-
-methods: {
-  inputChange(event) {
-    this.message = event.target.value;
-  }
-}
-```
-
-2. v-model 的使用 
-```vue
-# 已知v-model是上面的语法糖 所以可以把 :value="message" @input="inputChange" 简写成 v-model="message"
-<input type="text" v-model="message">
-
-data() {
-  return {
-    message: "Hello World"
-  }
-},
-```

@@ -21,34 +21,34 @@ module.exports = {
   ],
   "theme": "reco",
   "themeConfig": {
-    logo:'/logo.jpg',
+    logo: '/logo.jpg',
     "nav": [{
-        "text": "首页",
-        "link": "/",
-        "icon": "reco-home"
-      },
-      {
-        "text": "时间线",
-        "link": "/timeline/",
-        "icon": "reco-date"
-      },
-      // {
-      //   "text": "Docs",
-      //   "icon": "reco-message",
-      //   "items": [{
-      //     "text": "vuepress-reco",
-      //     "link": "/docs/theme-reco/"
-      //   }]
-      // },
-      {
-        "text": "Contact",
-        "icon": "reco-message",
-        "items": [{
-          "text": "GitHub",
-          "link": "https://github.com/codehyd",
-          "icon": "reco-github"
-        }]
-      }
+      "text": "首页",
+      "link": "/",
+      "icon": "reco-home"
+    },
+    {
+      "text": "时间线",
+      "link": "/timeline/",
+      "icon": "reco-date"
+    },
+    // {
+    //   "text": "Docs",
+    //   "icon": "reco-message",
+    //   "items": [{
+    //     "text": "vuepress-reco",
+    //     "link": "/docs/theme-reco/"
+    //   }]
+    // },
+    {
+      "text": "Contact",
+      "icon": "reco-message",
+      "items": [{
+        "text": "GitHub",
+        "link": "https://github.com/codehyd",
+        "icon": "reco-github"
+      }]
+    }
     ],
     "sidebar": {
       "/docs/theme-reco/": [
@@ -57,7 +57,7 @@ module.exports = {
         "plugin",
         "api",
         "aaa"
-      
+
       ]
     },
     "type": "blog",
@@ -72,11 +72,11 @@ module.exports = {
       }
     },
     "friendLink": [{
-        "title": "amwanbai",
-        "desc": "努力",
-        "email": "2303885822@qq.com",
-        "link": "https://github.com/codehyd"
-      },
+      "title": "amwanbai",
+      "desc": "努力",
+      "email": "2303885822@qq.com",
+      "link": "https://github.com/codehyd"
+    },
     ],
     // "logo": "/logo.png",
     "search": true,
@@ -84,9 +84,9 @@ module.exports = {
     "lastUpdated": "Last Updated",
     "author": "amwanbai",
     "authorAvatar": "/logo.jpg",
-    "record": "amwambai",
+    "record": "amwanbai",
     "startYear": "2021"
-  },  
+  },
   "markdown": {
     "lineNumbers": true
   },
