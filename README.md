@@ -1,6 +1,6 @@
 ---
 home: true
-# heroText: 记录
+heroText: 记录
 # tagline: A simple and beautiful vuepress blog theme.
 heroImage: /home.jpg
 heroImageStyle: {
@@ -12,7 +12,7 @@ heroImageStyle: {
   borderRadius: '1rem',
 }
 bgImageStyle: {
-  height: '450px'
+  height: '650px'
 }
 # isShowTitleInHome: false
 # actionText: Guide
