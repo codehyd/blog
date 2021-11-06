@@ -17,11 +17,23 @@ module.exports = {
         "name": "viewport",
         "content": "width=device-width,initial-scale=1,user-scalable=no"
       }
-    ]
+    ],
+    // 引入jquery
+    ["script", {
+      "language": "javascript",
+      "type": "text/javascript",
+      "src": "https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"
+    }],
+    // 引入鼠标点击脚本
+    ["script", {
+      "language": "javascript",
+      "type": "text/javascript",
+      "src": "/js/MouseClickEffect.js"
+    }]
   ],
   "theme": "reco",
   "themeConfig": {
-    logo: '/logo.jpg',
+    logo: '/img/logo.jpg',
     "nav": [{
       "text": "首页",
       "link": "/",
@@ -76,13 +88,12 @@ module.exports = {
       "desc": "13229231326",
       // "email": "2303885822@qq.com",
       // "link": "https://github.com/codehyd"
-    },
-    ],
+    },],
     "search": true,
     "searchMaxSuggestions": 10,
     "lastUpdated": "Last Updated",
     "author": "amwanbai",
-    "authorAvatar": "/logo.jpg",
+    "authorAvatar": "/img/logo.jpg",
     "record": "amwanbai",
     "startYear": "2021"
   },
@@ -106,6 +117,16 @@ module.exports = {
         bottom: '40px'
       }
     }],
-    ['vuepress-plugin-code-copy', true]
+    ['vuepress-plugin-code-copy', true],
+    [
+      "dynamic-title",
+      {
+        showIcon: "/favicon.ico",
+        showText: "(/≧▽≦/)咦！又好了！",
+        hideIcon: "/failure.ico",
+        hideText: "(●—●)喔哟，崩溃啦！",
+        recoverTime: 2000
+      }
+    ]
   ]
 }

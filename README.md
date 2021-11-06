@@ -2,7 +2,7 @@
 home: true
 heroText: 记录
 # tagline: A simple and beautiful vuepress blog theme.
-heroImage: /home.jpg
+heroImage: /img/home.jpg
 heroImageStyle: {
   maxWidth: '600px',
   width: '100%',
