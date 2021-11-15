@@ -117,3 +117,78 @@ updated(组件渲染更新后)
 activated(组件被激活)
 deactivated(组件失去激活状态时)
 ```
+
+# 组件的 v-model
+
+- 在表单元素中的v-model 会帮助我们做两件事情
+1. 定义message
+2. 在input事件中监听事件 @input="message = $event.target.value"
+
+- 而在组件中也有v-model方法
+> 在组件中v-model默认会有modelValue的值 所以在子组件中必须定义modelValue
+- 通过组件的 @update:(prop) 来给父组件传递事件并且把值赋给父组件
+
+
+```vue
+# 父组件  
+<hy-input v-model="message"></hy-input>
+
+data(){
+  return {
+    message: ''
+  }
+}
+
+# 子组件
+<input v-model="value" />
+
+props: {
+  modelValue: String
+},
+
+// 如果是组件的v-model 则需要通过 update:(prop) 来发出该事件
+emits: ['update:modelValue'],
+
+computed: {
+  value: {
+    set(value) {
+      // 在获取计算属性新值的时候并把事件传给父组件
+      this.$emit("update:modelValue", value);
+    },
+    get() {
+      return this.title;
+    }
+  }
+},
+```
+> 多个组件 v-model 写法
+```vue
+# 父组件  在v-model跟上别名
+<hy-input v-model:title="title"></hy-input>
+
+data(){
+  return {
+    title: ''
+  }
+}
+
+# 子组件
+<input v-model="value" />
+
+props: {
+  title: String
+},
+
+emits: ['update:title'],
+
+computed: {
+  value: {
+    set(value) {
+      this.$emit("update:title", value);
+    },
+    get() {
+      return this.title;
+    }
+  }
+},
+```
