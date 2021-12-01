@@ -16,7 +16,7 @@ categories:
 > 创建mixin.js对象
 
 ```js
-exprot const mixin = {
+export const mixin = {
   created(){
     console.log('生命周期执行')
   },
