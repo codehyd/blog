@@ -1,5 +1,5 @@
 ---
-title: Vue3 Composition API（一）
+title: Vue3 Composition API
 date: 2021-11-18
 tags:
  - Vue3
@@ -7,7 +7,13 @@ categories:
  - Vue
 ---
 
-# 认识Mixin
+- 本章节内容比较多 包含以下内容 
+
+> 因为render函数不是很常用且应该不会有这样的需求所以偷个懒哈哈哈:) [[toc]]
+
+
+
+## 认识Mixin(混入对象)
 - 如果在每一个组件中都需要同一个代码逻辑比如生命周期 业务代码逻辑等都可以使用mixin
 - Mixin提供了一种非常灵活的方式，来分发Vue组件中的可复用功能
 - 一个Mixin对象可以包含任何组件选项
@@ -47,7 +53,7 @@ app.mixin({
 })
 ```
 
-# extends
+## extends
 - 类似于Mixin的方式是通过extends属性
   - 允许声明扩展另外一个组件，类似于Mixins
 
@@ -65,7 +71,7 @@ extends: (父组件)
 // 这样可以使用 组件的info
 ```
 
-# 认识Composition API
+## 认识Composition API
 
 - 使用Composition API需要在vue组件中使用setup函数
 - 注意 setup函数中是没有绑定this的 所以不能使用this
@@ -162,7 +168,7 @@ setup(){
 3. 其实本质上就是readonly返回的对象的setter方法被劫持了而已
 
 
-# computed 计算属性
+## Vue3 computed 计算属性
 ```vue
 # 需要引用computed函数
 import { computed, ref } from 'vue'
@@ -191,7 +197,7 @@ setup(){
 }
 ```
 
-# 侦听数据的变化
+##  Vue3 侦听数据的变化
 > 在 vue3 中侦听数据的方法分别是 watch | watchEffect
 
 - watch 需要我们手动去指定侦听的数据源
@@ -381,3 +387,158 @@ watch(()=>{},{
 - watch访问侦听状态变化前后的值
 - watch更具体的说明当哪些状态发生变化时，触发侦听器的执行
 
+
+## setup中使用ref(元素或组件对象)对象
+
+- 们只需要定义一个ref对象，绑定到元素或者组件的ref属性上即可
+
+```vue
+  # template
+  <h2 ref="titleRef">哈哈哈</h2>
+
+  # js
+  import { ref } from 'vue'
+
+  setup(){
+    const titleRef = ref(null)
+
+    return {
+      titleRef
+    }
+  }
+```
+## 生命周期钩子函数
+- 在vue3中使用生命周期函数可以通过导入的方法注册生命周期钩子 
+- 与vue2不同的地方是生命周期函数钩子在前面加上了on 例如: onMounted
+
+```js
+import { onMounted } from 'vue'
+
+setup(){
+  // 执行生命周期 onMounted
+  onMounted(()=>{
+    console.log('mounted声明周期函数执行')
+  })
+
+  return {
+
+  }
+}
+```
+
+
+## Provide函数
+>> 如果我们需要满足组件组件(多层组件)的通信则可以使用 Provide函数 和 Inject函数
+- 我们可以通过 provide 来提供数据
+- provide 可以传入两个参数
+  1. name：提供的属性名称
+  2. value：提供的属性值
+
+```js
+import { provide, ref, readonly } from 'vue';
+
+// 传递的组件
+import Home from './Home.vue';
+
+export default {
+  // 注册组件
+  components: {
+    Home
+  },
+  setup() {
+
+    
+    const name = ref("myname");
+    let counter = ref(100);
+
+    // 通过provide函数传递只读的可响应式ref对象
+    provide("name", readonly(name));
+    provide("counter", readonly(counter));
+
+
+    return {
+      increment,
+      counter
+    }
+  }
+}
+```
+
+## Inject函数
+
+- 在 后代组件 中可以通过 inject 来注入需要的属性和对应的值
+- inject可以传入两个参数
+  1. property传过来对应的 name
+  2. 默认值
+
+```js
+import { inject } from 'vue';
+
+export default {
+  setup() {
+    const name = inject("name");
+    const counter = inject("counter");
+
+
+    return {
+      name,
+      counter,
+    }
+  }
+}
+```
+
+## 逻辑抽取(hooks)
+
+- 在传统的开发模式下我们都将全部的逻辑都放到了一个页面上 显得非常的不友好 因为代码的可读性非常差
+- 我们可以将某些部分的逻辑进行抽取
+
+> 以下是一个计数器的案例
+
+```vue
+# 主页面
+<template>
+  <div>
+    <h2>当前计数: {{counter}}</h2>
+    <h2>计数*2: {{doubleCounter}}</h2>
+    <button @click="increment">+1</button>
+    <button @click="decrement">-1</button>
+  </div>
+</template>
+
+<script>
+  import userCounter from 'hooks文件'
+  export default {
+    setup() {
+      const { counter, doubleCounter, increment, decrement } = userCounter();
+
+      return {
+        counter,
+        doubleCounter,
+        increment,
+        decrement
+      }
+    }
+  }
+</script>
+```
+
+- 新建计数器逻辑页面
+```js
+import { ref, computed } from 'vue';
+
+export default function() {
+  const counter = ref(0);
+  const doubleCounter = computed(() => counter.value * 2);
+
+  const increment = () => counter.value++;
+  const decrement = () => counter.value--;
+
+  return {
+    counter, 
+    doubleCounter, 
+    increment, 
+    decrement
+  }
+}
+```
