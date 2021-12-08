@@ -7,6 +7,7 @@ categories:
  - TypeScript
 ---
 
+> 学习Typescript[[toc]]
 
 ## 变量的声明
 - 在TypeScript中定义变量都是需要指定标识符的类型
