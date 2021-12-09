@@ -278,4 +278,153 @@ console.log('hello')
 ```
 
 
+## Ts字面量类型
+- 字面量类型类似于字符串常量 相当于定义了一个字面量类型后 这个变量的值必须为字面量类型的值
+```ts
+type Name = 'my'
+let name1: Name = 'your' // 报错 
+let name2: Name = 'my'
+```
 
+
+## Ts类型缩小
+
+> 类型缩小称之为类型保护 常见的类型保护有以下几种
+1. typeof 
+- 在JavaScript中判断类型
+```ts
+let num = 1
+console.log(typeof num) // number
+```
+
+2. 平等缩小（比如===、!==）
+- 我们可以使用逻辑分支判断语句来表达相等性 或使用运算符
+```ts
+type idType = '1' | 'a'
+function printId(id: idType) {
+  // 1.if判断
+  if (id === '1') {
+    console.log(id)
+  } else if (
+    ...
+  )
+
+  // 2.switch判断
+  switch (id) {
+    case 'a':
+      console.log(id)
+      break;
+    ...
+  }
+}
+```
+3. instanceof
+- 在JavaScript中instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。
+```ts
+class Student {
+  studying() {
+    return "我是学生"
+  }
+}
+
+class Teacher {
+  teaching() {
+    return "我是老师"
+  }
+}
+
+function work(p: Student | Teacher) {
+  if (p instanceof Student) {
+    p.studying()
+  } else {
+    p.teaching()
+  }
+}
+
+const stu = new Student()
+const tea = new Teacher()
+console.log(stu) // Student类
+console.log(tea) // Teacher类
+```
+
+4. in
+- 如果指定的属性在指定的对象或其原型链中，则in 运算符返回true
+```ts
+const car = { make: 'Honda', model: 'Accord', year: 1998 };
+console.log('make' in car); // true
+console.log('name' in car); // false
+```
+
+## Ts函数类型
+- 我们可以编写函数类型的表达式（Function Type Expressions），来表示函数类型
+```ts
+type FooFnType = () => void
+function bar(fn: FooFnType) {
+  fn()
+}
+```
+
+- 需要传递参数的函数时
+```ts
+type AddFnType = (num1: number, num2: number) =>  number
+const add: AddFnType = (a1: number, a2: number) => {
+  return a1 + a2
+}
+```
+
+## Ts函数参数的可选类型
+- 在函数中参数可以有可选类型的
+- 在选择需要可选类型的属性后加(?)
+```ts
+function foo(x: number, y?: number) {}
+foo(20, 30)
+foo(20)
+```
+> 注意: 可选类型不要放在第一位 
+
+## Ts函数的默认参数
+- 在ES6开始函数支持默认参数
+- 在类型后面利用(＝)运算符添加默认值
+```ts
+function foo(y: number, x: number = 20) {
+  console.log(x, y)
+}
+foo(30) // 30 20
+```
+
+## Ts函数的剩余参数
+```ts
+// initalNum: 第一个参数
+// ...nums: 剩余参数
+function sum(initalNum: number, ...nums: number[]) {
+  let total = initalNum
+  for (const num of nums) {
+    total += num
+  }
+  return total
+}
+
+console.log(sum(20, 30, 40, 50)) // 初始值20 返回20+30+40+50=140
+```
+
+## Ts函数重载
+- 函数的重载表示在定义函数中就是函数或者方法有相同的名称，但是参数列表不相同的情形
+- 在TypeScript中函数的重载表示函数的名称相同且函数的参数长度不同或函数的参数类型各不相同
+  - 例子: 我们希望编写一个函数可以对字符串和数字类型进行相加
+
+```ts
+// 定义重载函数
+function add(num1: number, num2: number): number
+function add(num1: string, num2: string): string
+
+// 定义函数 
+function add(num1: any, num2: any): any {
+  return num1 + num2
+}
+
+// 在我们调用函数的时候 它会根据函数的传入的类型来决定执行哪一个函数体
+const result = add(20, 30)
+const result2 = add("abc", "cba")
+console.log(result) // 50
+console.log(result2) // abccba
+```

@@ -1,5 +1,5 @@
 ---
-title: JS运算符
+title: JS语法(运算符)
 date: 2021-11-03
 tags:
  - JS
