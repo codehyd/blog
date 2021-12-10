@@ -37,9 +37,9 @@ categories:
     - 计算属性和 methods 的区别是计算属性是有缓存的 也就是说多次调用计算属性 和 methods 后 计算属性只执行一次 methods 需要调用多次 所以计算属性是有缓存 当我们多次使用计算属性时 计算属性只会执行一次
 ```vue
 computed:{
-    computedName(){
-        定义计算属性方法
-    }
+  computedName(){
+    定义计算属性方法
+  }
 }
 ```
 
@@ -53,12 +53,12 @@ computedName(){
 
 # 当计算属性需要 set 属性时
 computedName:{
-    get(){
+  get(){
 
-    },
-    set(val){
+  },
+  set(val){
 
-    }
+  }
 }
 ```
 3. set 属性会返回最新的值
@@ -69,11 +69,11 @@ computedName:{
     - 可以侦听 data属性 和 computed计算属性的值
 ```vue
 watch:{
-    watchName(newValue,oldValue){
-        侦听器会返回两个值
-        newValue: 侦听后的值(最新改变的值) 
-        oldValue: 侦听前的值(还未改变之前的值) 
-    }
+  watchName(newValue,oldValue){
+    侦听器会返回两个值
+    newValue: 侦听后的值(最新改变的值) 
+    oldValue: 侦听前的值(还未改变之前的值) 
+  }
 }
 ```
 
@@ -82,14 +82,13 @@ watch:{
     - 如果监听的数据改变时 数据类型为数组或对象时 则 newValue 和 oldValue 的值会指向同一个对象或数组  Vue不会保留之前更改的副本
 ```vue
 watch:{
-    watchName:{
-        handler(newValue,oldValue){
-            // 这一种方法与上面watch方法一样
-        },
-        deep: true, // 深度侦听 可以侦听复杂数据类型内的数据
-        immediate: true // 立即执行 相当于先执行一次监听
-            
-    }
+  watchName:{
+    handler(newValue,oldValue){
+      // 这一种方法与上面watch方法一样
+    },
+    deep: true, // 深度侦听 可以侦听复杂数据类型内的数据
+    immediate: true // 立即执行 相当于先执行一次监听
+  }
 }
 ```
 

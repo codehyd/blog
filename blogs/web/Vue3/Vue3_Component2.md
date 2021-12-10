@@ -7,8 +7,7 @@ categories:
  - Vue
 ---
 
-# 非父子组件通信
-
+## 非父子组件通信(相互有关联)
 > (非父子组件通信方法一:) Provide/Inject 
 
  1. Provide/Inject用于非父子组件之间共享数据
@@ -16,18 +15,18 @@ categories:
   - 在这种情况下，如果我们仍然将props沿着组件链逐级传递下去，就会非常的麻烦
   - 所以我们需要使用可以使用 Provide 和 Inject
 
->> App.vue ->  Home.vue -> HomeContent.vue 假如我们需要App.vue 与 HomeContent.vue 组件的通信
+- App.vue ->  Home.vue -> HomeContent.vue 假如我们需要App.vue 与 HomeContent.vue 组件的通信(爷孙组件)
 
 ```vue
-父组件App.vue 给 HomeContent.vue组件 通过provide 传递name
+App.vue 给 HomeContent.vue组件 通过provide 传递name
   provide:{
     name:"小米",
   }
 
-子孙组件 HomeContent.vue 通过 inject 接收 App.vue 传递过来的 name
+HomeContent.vue 通过 inject 接收 App.vue 传递过来的 name
   inject:["name"]
 ```
->> 1. 假如传递的数据为响应数据 则需要使用 Vue3 的 computed 属性 (父组件传递)
+1. 假如传递的数据为响应数据 则需要使用 Vue3 的 computed 属性 (父组件(最上层组件)传递)
 
 ```vue
 <button @click="arr.push('新数据')">添加新数据</button>
@@ -39,13 +38,13 @@ data(){
 },
 provide(){
   return {
-    lng:conputed(() => this.arr.length)
+    lng:computed(() => this.arr.length)
   }
 },
 ```
 
 
->> 2. 接收响应数据 
+2. 接收响应数据 
 
 ```vue
 <h2>{{ lng.value }}</h2>
@@ -107,7 +106,7 @@ emitter.on('foo',onFoo) // 监听
 emitter.off('foo',onFoo) // 取消监听
 ```
 
-# 插槽的使用(slot)
+## 插槽的使用(slot)
 
 > 在开发中，我们会经常封装一个个可复用的组件
   - 前面我们会通过props传递给组件一些数据，让组件来进行展示
@@ -147,7 +146,7 @@ emitter.off('foo',onFoo) // 取消监听
 ```
 4. 缩写: (v-slot:) = (#)
 
-# 作用域插槽
+## 作用域插槽
 
 > 在Vue中渲染也是有作用域的
   - 父级模板里的所有内容都是在父级作用域中编译的

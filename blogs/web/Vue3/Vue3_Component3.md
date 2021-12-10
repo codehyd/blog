@@ -7,7 +7,7 @@ categories:
  - Vue
 ---
 
-# 动态组件
+## 动态组件
 
 > 组件切换的方法 
 1. 通过v-if来判断 并且显示不同的 组件
@@ -20,7 +20,7 @@ categories:
 <component :is="cpnName"></component>
 ```
 
-# 认识Keep-alive
+## Keep-alive
 > 在默认情况下我们切换组件后会被销毁的 再次回来则重新创建该组件
 - 如果我们不希望组件随便销毁则可以使用<keep-alive></keep-alive>
 
@@ -29,12 +29,13 @@ categories:
   <cpn><cpn>
 </keep-alive>
 ```
-## keep-alive属性
+
+1. keep-alive属性
 - include (String | regExp | Array) 通过组件的名称匹配到的组件会被缓存
 - exclude (String | regExp | Array) 通过组件的名称匹配到组件都不会被缓存
 - max (String | String) 最多可以缓存多少组实例 一旦超过了这个数字 则缓存组件中最近没有被访问的实例会被销毁
 
-# 异步组件
+## 异步组件
 > 如果项目过大则打包后会将所有的文件打包到一个app.js里面 会造成首屏加载速度过慢 对于某些组件我们希望通过异步的方式来进行加载(目的是可以对其进行分包处理)
 
 1. webpack代码分包
@@ -73,7 +74,7 @@ const AsyncCpn = defineAsyncComponent({
 //  注意: 获取到异步组件对象后在components属性注册异步组件
 ```
 
-# $refs的使用
+## $refs的使用
 
 > 在特殊情况下我们需要获取到组件或者Dom元素的实例对象 可以通过$refs属性来获取
 - 在vue开发中是不推荐使用DOM操作元素的
@@ -87,12 +88,12 @@ const AsyncCpn = defineAsyncComponent({
 # this.$refs.cpn (获取到cpn的组件实例对象)
 ```
 
-# $parent和$root
+## $parent和$root
 > 我们可以通过$parent来访问父元素 通过$root来访问根元素
 - 用法与$refs类似
 
 
-# 认识生命周期
+## 认识生命周期
 
 > 在组件中我们会有一些列的钩子函数 在某个时间点会被Vue调用进行回调
 
@@ -118,7 +119,7 @@ activated(组件被激活)
 deactivated(组件失去激活状态时)
 ```
 
-# 组件的 v-model
+## 组件的 v-model
 
 - 在表单元素中的v-model 会帮助我们做两件事情
 1. 定义message

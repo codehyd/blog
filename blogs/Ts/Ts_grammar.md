@@ -225,7 +225,6 @@ str = '1'
 str = 1
 str = true // 报错
 ```
-
 > 在可选类型中可以看成是 类型 和 undefined 的联合类型
 
 
@@ -239,6 +238,15 @@ str = '1'
 str = 1
 str = true // 报错
 ```
+
+## Ts交叉类型
+- 交叉类似表示需要满足多个类型的条件
+- 与联合类型不同的是交叉类型使用 & 符号
+
+```ts
+type str = number & string //never类型
+```
+> 在实际开发中我们使用交叉类型往往是使用在对象类型
 
 ## Ts类型断言 as
 - 在某些情况下TypeScript是无法具体获取类型信息 比如:
@@ -428,3 +436,106 @@ const result2 = add("abc", "cba")
 console.log(result) // 50
 console.log(result2) // abccba
 ```
+
+## Ts枚举类型
+- 枚举（Enum）类型用于取值被限定在一定范围内的场景 如上下左右 红绿灯等
+
+- 枚举案例的使用
+```ts
+// enum定义枚举类型
+enum Direction {
+  LEFT,
+  RIGHT,
+  TOP,
+  BOTTOM
+}
+
+// 传递参数: direction 类型为枚举类型 Direction
+function turnDirection(direction: Direction) {
+  switch (direction) {
+    case Direction.LEFT:
+      console.log("改变角色的方向向左")
+      break;
+    case Direction.RIGHT:
+      console.log("改变角色的方向向右")
+      break;
+    case Direction.TOP:
+      console.log("改变角色的方向向上")
+      break;
+    case Direction.BOTTOM:
+      console.log("改变角色的方向向下")
+      break;
+    default:
+      const foo: never = direction;
+      break;
+  }
+}
+
+turnDirection(Direction.LEFT) 
+turnDirection(Direction.RIGHT)
+turnDirection(Direction.TOP)
+turnDirection(Direction.BOTTOM)
+```
+
+- 在枚举成员中第一个成员的默认值为0 而后的成员开始根据上一成员递增
+- 也可以在定义枚举成员时手动赋值
+
+## Ts泛型
+- 泛型可以理解为宽泛的类型，通常用于类和函数
+- 如果遇到不确定类型或不明确时我们可以使用泛型
+- 泛型的核心是把类型当一种特殊的参数传入进去
+
+```ts
+function fn<T>(str: T):T{
+  return str
+}
+fn<number>(10) // 指定泛型的类型为number 当然可以是所有TypeScript支持的类型都可以传递
+fn(10) // 若不设置指定的类型的话 则泛型返回的是字面量类型
+```
+## Ts命名空间(namespace)
+- 命名空间在TypeScript早期时，称之为内部模块，主要目的是将一个模块内部再进行作用域的划分，防止一些命名冲突的问题
+
+```ts
+// 定义命名空间(namespace) 同时还需要(export)外部导出
+export namespace time {
+  export function format(time: string) {
+    return time
+  }
+}
+
+// 外部文件使用 需要通过(import)关键字导入
+import { time } from 'xxx.ts'
+console.log(time.format(new Date()))
+```
+
+
+## Ts类型查找以及声明模块
+- TypeScript对类型的管理和查找规则是通过 (.d.ts文件来进行管理的)
+  - 我们之前编写的typescript文件都是 .ts 文件，这些文件最终会输出 .js 文件，也是我们通常编写代码的地方
+  - 还有另外一种文件 .d.ts 文件，它是用来做类型的声明(declare). 它仅仅用来做类型检测，告知typescript我们有哪些类型
+- TypeScript会根据以下3种方式来查找我们的类型声明
+  - 内置类型声明
+    > 内置类型声明是typescript自带的、帮助我们内置了JavaScript运行时的一些标准化API的声明文件 比如JavaScript内置的类型 Math Data等
+  - 外部定义类型声明
+    > 外部类型声明通常是我们使用一些库（比如第三方库）时，需要的一些类型声明
+    - 声明第三方库有两种类型声明方法
+      1. 在第三方库中进行类型声明（编写.d.ts文件），比如axios等
+      2. 通过社区的一个公有库DefinitelyTyped存放类型声明文件
+        - [社区库Github地址](https://github.com/DefinitelyTyped/DefinitelyTyped/)
+      3. [通过npm包管理安装对应的类型](https://www.typescriptlang.org/dt/search?search=)
+  - 自己定义类型声明
+    - 当第三方库是纯JavaScript库时 是没有对TypeScript的支持也没有(.d.ts文件)的时候我们需要自己定义声明文件
+
+
+## 声明模块
+- 我们会在我们的项目内创建(.d.ts文件) 然后在里面声明对应需要声明的模块
+- 在VsCode编辑器中 如果我们创建并声明了模块后 编辑器会自动扫描
+- 比如lodash模块(纯JavaScript)默认在TypeScript下不能使用的情况，可以自己来声明这个模块
+```ts
+// 声明模块的语法 同时在内部声明需要导出对应的库或函数
+declare module '模块名' {
+  // 当我们需要使用 loadsh 这个库的 join 方法时
+  export function join(arr: any[]): void
+}。
+```
+

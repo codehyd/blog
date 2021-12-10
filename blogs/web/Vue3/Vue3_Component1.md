@@ -52,7 +52,7 @@ props: {
 
 2. 非 prop 的 attribute
 
-- 当我们传递组件某个属性的时候且该属性没有定义在 props 或者 cmits 中 则该属性称之为 非Prop的Attribute
+- 当我们传递组件某个属性的时候且该属性没有定义在 props 或者 emits 中 则该属性称之为 非Prop的Attribute
 
   1. Attribute会继承
     - 当组件有单个根节点时，非 Prop 的 Attribute 将自动添加到根节点的 Attribute 中
@@ -61,12 +61,14 @@ props: {
     - 如果我们不希望组件的根元素继承attribute，可以在组件中设置 inheritAttrs: false
 
 ```js
-inheritAttrs: false
+export default {
+  inheritAttrs: false
+}
 ```
 
-  3. 组件中访问非props的attribute
+3. 组件中访问非props的attribute
 
-    - 可以使用 $attrs 来访问
+- 可以使用 $attrs 来访问
 
 ```vue
 # 父组件
