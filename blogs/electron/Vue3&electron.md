@@ -44,6 +44,8 @@ npm install --save-dev electron
 npm start
 ```
 
+- 运行后会出现报错提示框 是因为没有入口main.js文件 在根目录创建main.js文件即可
+
 > [详情请看官方文档](https://www.electronjs.org/)
 
 > 使用vue3框架来创建electron
