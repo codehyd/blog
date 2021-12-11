@@ -210,7 +210,7 @@ module: {
       // 文件限制
       parser: {
         dataUrlCondition:{
-          maxSize: 100 * 1024 // 超过100kb 则转化为 base6
+          maxSize: 100 * 1024 // 超过100kb 则转化为 base64
         },
       },
       // 生成文件名称规则

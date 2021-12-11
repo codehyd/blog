@@ -27,8 +27,8 @@ npm install @babel/core @babel/cli -D
 2. 使用 Babel 来处理我们的源代码
 ```
 # src：是源文件的目录
-# --out-dir：指定要输出的文件夹 dist
-npx babel 'src' --out-dir dist
+# --out-dir：指定要输出的文件夹叫 dist
+npx babel (src) --out-dir dist
 ```
 
 > 如果需要 babel转换 一定的代码时 需要使用babel相关的插件
@@ -40,7 +40,7 @@ npx babel 'src' --out-dir dist
 npm install @babel/plugin-transform-arrow-functions -D
 
 # 使用
-npx babel src --out-dir dist --plugins=@babel/plugin-transform-arrow-functions
+npx babel (src) --out-dir dist --plugins=@babel/plugin-transform-arrow-functions
 
 ```
 
@@ -51,7 +51,7 @@ npx babel src --out-dir dist --plugins=@babel/plugin-transform-arrow-functions
 npm install @babel/plugin-transform-block-scoping -D 
 
 # 使用
-npx babel src --out-dir dist --plugins=@babel/plugin-transform-block-scoping,@babel/plugin-transform-arrow-functions
+npx babel (src) --out-dir dist --plugins=@babel/plugin-transform-block-scoping,@babel/plugin-transform-arrow-functions
 ```
 
 3. Babel的预设preset
@@ -63,7 +63,7 @@ npx babel src --out-dir dist --plugins=@babel/plugin-transform-block-scoping,@ba
 npm install @babel/preset-env -D
 
 # 使用
-npx babel src --out-dir dist --presets=@babel/preset-env
+npx babel (src) --out-dir dist --presets=@babel/preset-env
 ```
 
 4. Babel的底层原理
