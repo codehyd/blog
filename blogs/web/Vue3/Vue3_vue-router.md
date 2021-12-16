@@ -28,7 +28,7 @@ npm install vue-router@4
 import Home from './Home.vue'
 
 // 2. 创建路由映射
-const routers = [
+const routes = [
   // 重定向配置 表示路由的默认路径
   {
     path:'/',
@@ -62,7 +62,7 @@ const routers = [
 // 其中必须传递的参数为 routers: 路由映射 | history: 路由模式(hash | history)
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 const router = createRouter({
-  routers,
+  routes,
   // history: createWebHashHistory() hash模式
   history: createWebHistory() // history模式
 })
